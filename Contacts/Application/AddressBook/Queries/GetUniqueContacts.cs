@@ -42,7 +42,7 @@ namespace Contacts.Application.AddressBook.Queries
             //var a1 = cursor.FirstOrDefault();
             //var a2 = _collection.Find(f => f.UserId == request.Id2).FirstOrDefault();
 
-            a2?.Contacts?.ForEach(f =>
+            a2?.Contacts?.OrderBy(o => o.FirstName).ToList().ForEach(f =>
             {
                 if (a1.Contacts.Any(a => a.Email == f.Email))
                     addressBook.Contacts.Add(f);
